@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f7">
+  <meta name="description" content="STUDIQ — Your Personal Learning System">
+  <title>STUDIQ — Your Personal Learning System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="white">
+  <section class="auth-gate" id="authGate" aria-labelledby="authHeading">
+    <div class="auth-card">
+      <div class="auth-card-top"><a class="brand auth-brand" href="#" aria-label="STUDIQ"><span class="brand-mark">S.</span><span><strong>STUDIQ</strong><small>PERSONAL LEARNING SYSTEM</small></span></a><button class="lang-toggle" id="authLanguageToggle" type="button" aria-label="Switch language">EN</button></div>
+      <div class="auth-symbol" aria-hidden="true">✳</div>
+      <div class="eyebrow">YOUR PERSONAL STUDY SPACE</div>
+      <h1 id="authHeading">เข้าสู่ STUDIQ</h1>
+      <p class="auth-subheading" id="authSubheading">เข้าสู่ระบบเพื่อกลับไปยังแผนการเรียนส่วนตัว</p>
+      <div class="auth-tabs"><button id="authLoginTab" class="selected" type="button">เข้าสู่ระบบ</button><button id="authSignupTab" type="button">สร้างบัญชี</button></div>
+      <form id="authForm" class="auth-form">
+        <label>อีเมล<input class="input" id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254"></label>
+        <label>รหัสผ่าน<input class="input" id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="อย่างน้อย 8 ตัวอักษร" required maxlength="128"></label>
+        <button class="button button-full auth-submit" id="authSubmit" type="submit">เข้าสู่ระบบ</button>
+      </form>
+      <p class="auth-message" id="authMessage" role="status" aria-live="polite">กำลังตรวจสอบการตั้งค่าบัญชี…</p>
+      <div class="auth-privacy"><span>🔒</span><p><strong>ข้อมูลของคุณเป็นส่วนตัว</strong><br>ต้องลงชื่อเข้าใช้เพื่อเข้าถึงงาน โน้ต และตารางของบัญชีนี้ ออกจากระบบเมื่อใช้เครื่องร่วมกับผู้อื่น</p></div>
+      <p class="auth-footnote">STUDIQ does not store your password in the website files.</p>
+    </div>
+  </section>
+  <div class="app-shell auth-locked">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="STUDIQ home">
+        <span class="brand-mark">S.</span>
+        <span><strong>STUDIQ</strong><small>PERSONAL LEARNING SYSTEM</small></span>
+      </a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="nav">
+        <button class="nav-link active" data-page="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-page="planner"><span>▣</span> Smart Planner</button>
+        <button class="nav-link" data-page="schedule"><span>◷</span> Smart Schedule</button>
+        <button class="nav-link" data-page="focus"><span>◎</span> Focus Room</button>
+        <button class="nav-link" data-page="notes"><span>▤</span> My Notes</button>
+        <button class="nav-link" data-page="progress"><span>↗</span> Progress</button>
+        <button class="nav-link" data-page="habits"><span>✳</span> Habit Tracker</button>
+      </nav>
+      <div class="nav-label nav-label-spaced">PERSONALIZE</div>
+      <nav class="nav">
+        <button class="nav-link" data-page="themes"><span>◐</span> Theme Studio <i>6</i></button>
+        <button class="nav-link" data-page="settings"><span>⚙</span> Settings</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-goal">
+          <span class="muted tiny">WEEKLY GOAL</span>
+          <strong>Make progress, not pressure.</strong>
+          <div class="progress-track"><div id="sideProgress" class="progress-fill"></div></div>
+          <div class="between tiny muted"><span id="sideProgressText">0 tasks completed</span><b id="sidePercent">0%</b></div>
+        </div>
+        <div class="sidebar-foot">Made for your next level.<br><b>STUDIQ © 2026</b></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-title-wrap">
+          <button class="icon-button mobile-menu" id="mobileMenu" aria-label="เปิดเมนู">☰</button>
+          <div><div class="breadcrumb">Workspace / <span id="breadcrumbCurrent">Overview</span></div><h1 id="pageTitle">Dashboard <span class="title-spark">✳</span></h1></div>
+        </div>
+        <div class="top-actions">
+          <button class="lang-toggle" id="languageToggle" type="button" aria-label="Switch language" title="Switch language">EN</button><button class="icon-button" id="topTheme" title="เปลี่ยนธีม" aria-label="เปลี่ยนธีม">◐</button>
+          <button class="icon-button" id="topPrint" title="พิมพ์หน้า" aria-label="พิมพ์หน้า">⎙</button>
+          <span class="account-email" id="currentAccountEmail"></span>
+          <button class="button button-secondary button-small logout-button" id="logoutButton" type="button">ออกจากระบบ</button>
+          <div class="avatar" title="STUDIQ user">S</div>
+        </div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="hero">
+          <div class="hero-copy"><div class="eyebrow">YOUR STUDY SPACE · <span id="todayDate"></span></div><h2>Small steps.<br><span>Big progress.</span></h2><p>ทุกความสำเร็จเริ่มจากการวางแผนที่ดี วันนี้มาจัดการสิ่งสำคัญทีละอย่าง แล้วไปให้ถึงเป้าหมายกัน</p><button class="button button-inverse" data-go="planner">+ วางแผนวันนี้</button></div>
+          <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-card"><span class="art-star">✳</span><span class="art-label">YOUR NEXT LEVEL</span><strong>Focus on<br>what matters.</strong><div class="art-line"></div><small>PLAN · DO · GROW</small></div></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-top"><span>งานที่เสร็จแล้ว</span><span class="stat-icon">✓</span></div><strong class="stat-value" id="dashTasksDone">0 <small>/ 0</small></strong><p>เริ่มจากงานเล็ก ๆ ทีละอย่าง</p></article>
+          <article class="stat-card"><div class="stat-top"><span>เวลาโฟกัสวันนี้</span><span class="stat-icon">◷</span></div><strong class="stat-value" id="dashFocusTime">0 <small>นาที</small></strong><p>ทุกนาทีที่ตั้งใจมีความหมาย</p></article>
+          <article class="stat-card"><div class="stat-top"><span>งานที่กำลังทำ</span><span class="stat-icon">↗</span></div><strong class="stat-value" id="dashActiveTasks">0</strong><p>จัดลำดับงานแล้วเริ่มได้เลย</p></article>
+          <article class="stat-card"><div class="stat-top"><span>นิสัยวันนี้</span><span class="stat-icon">✳</span></div><strong class="stat-value" id="dashHabits">0 <small>/ 0</small></strong><p>ความสม่ำเสมอสำคัญที่สุด</p></article>
+        </div>
+        <div class="section-heading"><div><h2>Today's overview</h2><p>ภาพรวมการเรียนของคุณในวันนี้</p></div><button class="text-button" data-go="progress">ดูภาพรวมทั้งหมด ↗</button></div>
+        <div class="dashboard-grid">
+          <article class="panel"><div class="panel-heading"><div><h3>My tasks</h3><p>งานที่ต้องจัดการ</p></div><button class="button button-small" data-go="planner">จัดการงาน +</button></div><div id="dashboardTasks" class="compact-list"></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Today's schedule</h3><p>ตารางของคุณวันนี้</p></div><button class="text-button" data-go="schedule">ดูตาราง ↗</button></div><div id="dashboardSchedule" class="timeline"></div></article>
+        </div>
+        <div class="dashboard-grid bottom-dashboard">
+          <article class="panel"><div class="panel-heading"><div><h3>Daily mission</h3><p>เป้าหมายเล็ก ๆ ที่พาไปสู่ความก้าวหน้า</p></div><span class="pill">TODAY</span></div><div class="mission-overview"><div class="ring" id="dashMissionRing"><span id="dashMissionPercent">0%</span></div><div><strong id="dashMissionTitle">One step at a time</strong><p id="dashMissionCaption">ทำภารกิจให้สำเร็จทีละข้อ</p></div></div><div id="dashboardHabits" class="mission-list"></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Focus room</h3><p>โฟกัสทีละอย่าง แล้วพักให้พอ</p></div><span class="pill">POMODORO</span></div><div class="focus-mini"><div><span class="muted tiny">CURRENT SESSION</span><strong>Study session</strong><p>ตั้งใจ 25 นาที พัก 5 นาที</p></div><div class="mini-timer" id="miniTimer">25:00</div></div><button class="button button-full" data-go="focus">เปิด Focus Room ↗</button></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-planner">
+        <div class="page-intro"><div><div class="eyebrow">PLAN WITH CLARITY</div><h2>Smart Planner</h2><p>รวบรวมการบ้าน งานที่ต้องส่ง วันสอบ และกิจกรรมไว้ในที่เดียว</p></div><button class="button" id="plannerAddJump">+ เพิ่มงานใหม่</button></div>
+        <div class="filter-row"><div class="segmented" id="taskFilters"><button class="selected" data-filter="all">ทั้งหมด</button><button data-filter="active">ยังไม่เสร็จ</button><button data-filter="done">เสร็จแล้ว</button></div><select id="subjectFilter" class="input select-control"><option value="all">ทุกวิชา</option></select><input id="taskSearch" class="input search-input" placeholder="ค้นหางาน..." aria-label="ค้นหางาน"></div>
+        <div class="planner-layout"><article class="panel"><div class="panel-heading"><div><h3>รายการงาน</h3><p id="plannerCount">0 รายการ</p></div><span class="pill">TASKS</span></div><div id="plannerTaskList" class="task-list"></div></article>
+        <article class="panel form-panel" id="taskFormPanel"><div class="panel-heading"><div><h3>เพิ่มงานใหม่</h3><p>ใส่รายละเอียดให้ครบเพื่อจัดตารางได้ดีขึ้น</p></div></div>
+          <form id="taskForm" class="form-stack">
+            <label>ชื่องาน<input class="input" id="taskTitle" placeholder="เช่น อ่านบทที่ 3 วิชาชีววิทยา" required maxlength="120"></label>
+            <div class="form-two"><label>วิชา<input class="input" id="taskSubject" placeholder="เช่น ชีววิทยา" value="ทั่วไป"></label><label>วันครบกำหนด<input class="input" id="taskDue" type="date"></label></div>
+            <div class="form-two"><label>เวลาที่คาดว่าจะใช้ (นาที)<input class="input" id="taskDuration" type="number" min="5" max="600" value="45"></label><label>ความสำคัญ<select class="input" id="taskPriority"><option value="medium">ปานกลาง</option><option value="high">สูง</option><option value="low">ต่ำ</option></select></label></div>
+            <button class="button button-full" type="submit">บันทึกงาน +</button>
+          </form><div class="helper-box"><strong>✦ Smart Priority</strong><p>ระบบประเมินงานจากวันครบกำหนด ความสำคัญ และเวลาที่ต้องใช้ เพื่อช่วยแนะนำงานที่ควรเริ่มก่อน</p></div>
+        </article></div>
+      </section>
+
+      <section class="page" id="page-schedule">
+        <div class="page-intro"><div><div class="eyebrow">MAKE TIME FOR WHAT MATTERS</div><h2>Smart Schedule</h2><p>สร้างตารางอ่านหนังสือและทำงานให้เข้ากับเวลาของคุณ</p></div><button class="button" id="autoSchedule">✦ สร้างตารางอัตโนมัติ</button></div>
+        <div class="schedule-toolbar panel"><div><strong>ตารางประจำวัน</strong><p class="muted small">เลือกวันที่และเวลาว่างเพื่อวางแผน</p></div><div class="toolbar-actions"><label class="inline-label">วันที่ <input id="scheduleDate" class="input" type="date"></label><button class="button button-secondary" id="exportPng">↓ ส่งออก PNG</button><button class="button button-secondary" id="printSchedule">⎙ พิมพ์ A4</button></div></div>
+        <div class="schedule-layout"><article class="panel schedule-paper" id="schedulePaper"><div class="paper-heading"><div class="brand-mini">S.</div><div><h3>My Study Schedule</h3><p id="paperDate">Your plan, your pace.</p></div><span class="pill">STUDIQ</span></div><div id="scheduleEntries" class="schedule-entries"></div><div class="paper-footer">Plan smarter. Learn better. · STUDIQ</div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>ตั้งค่าเวลาว่าง</h3><p>ใช้สำหรับช่วยจัดตารางอัตโนมัติ</p></div></div><form id="availabilityForm" class="form-stack"><label>เริ่มว่าง<input class="input" type="time" id="availableStart" value="16:00" required></label><label>สิ้นสุดเวลาว่าง<input class="input" type="time" id="availableEnd" value="20:00" required></label><label>พักระหว่างงาน (นาที)<input class="input" id="breakDuration" type="number" min="0" max="60" value="10"></label><label class="check-line"><input type="checkbox" id="includeCompleted"> รวมงานที่ทำเสร็จแล้ว</label><button class="button button-full" type="submit">บันทึกเวลา</button></form><div class="helper-box"><strong>วิธีใช้ Smart Schedule</strong><p>1. เพิ่มงานใน Smart Planner พร้อมใส่เวลาที่คาดว่าจะใช้และวันครบกำหนด<br>2. ตั้งเวลาเริ่มว่างและเวลาสิ้นสุด เช่น 16:00–19:00<br>3. กำหนดเวลาพักระหว่างงาน เช่น 10 นาที<br>4. กด “บันทึกเวลา” เพื่อบันทึกช่วงเวลาพร้อมสร้างตาราง หรือกด “สร้างตารางอัตโนมัติ” หลังตั้งค่าแล้ว<br>5. ตรวจตารางด้านซ้าย หากมีงานใหม่หรือเปลี่ยนเวลาว่าง ให้สร้างตารางใหม่อีกครั้ง</p><p>ระบบจัดลำดับตามความสำคัญและวันครบกำหนด โดยวางงานภายในช่วงเวลาว่างที่คุณกำหนดไว้</p></div></article>
+        </div>
+      </section>
+
+      <section class="page" id="page-focus">
+        <div class="page-intro"><div><div class="eyebrow">DEEP WORK, GENTLE PACE</div><h2>Focus Room</h2><p>ลดสิ่งรบกวนและแบ่งเวลาอ่านหนังสือเป็นช่วงที่ทำได้จริง</p></div><span class="pill">POMODORO</span></div>
+        <div class="focus-layout"><article class="panel focus-main"><div class="focus-badge">✳ TIME TO FOCUS</div><div class="big-timer" id="bigTimer">25:00</div><div class="timer-mode" id="timerMode">FOCUS SESSION</div><div class="timer-progress"><div id="timerProgress"></div></div><div class="timer-controls"><button class="button" id="timerStart">เริ่มโฟกัส ▶</button><button class="button button-secondary" id="timerReset">เริ่มใหม่ ↻</button><button class="button button-secondary" id="timerSkip">ข้ามช่วง →</button></div><div class="session-tabs"><button class="selected" data-minutes="25" data-mode="focus">Focus · 25 min</button><button data-minutes="5" data-mode="short">Short break · 5 min</button><button data-minutes="15" data-mode="long">Long break · 15 min</button></div></article>
+          <article class="panel"><div class="panel-heading"><div><h3>Session settings</h3><p>บันทึกเวลาโฟกัสของคุณ</p></div></div><form id="focusForm" class="form-stack"><label>วิชาที่กำลังอ่าน<input id="focusSubject" class="input" placeholder="เช่น คณิตศาสตร์" value="อ่านหนังสือ"></label><label>ระยะเวลาโฟกัส (นาที)<input id="focusLength" class="input" type="number" min="1" max="180" value="25"></label><button class="button button-full" type="submit">ตั้งค่าเซสชัน</button></form><div class="focus-stat"><span class="stat-icon">◷</span><div><span class="muted small">โฟกัสสะสมวันนี้</span><strong id="focusTodayTotal">0 นาที</strong></div></div><div class="helper-box"><strong>จำไว้ว่า</strong><p>พักสายตา ดื่มน้ำ และปรับเวลาพักตามความเหมาะสม การพักก็เป็นส่วนหนึ่งของการเรียนรู้</p></div></article></div>
+      </section>
+
+      <section class="page" id="page-notes">
+        <div class="page-intro"><div><div class="eyebrow">KEEP YOUR KNOWLEDGE CLOSE</div><h2>My Notes</h2><p>รวมสรุปบทเรียนและไอเดียสำคัญไว้ค้นหาได้ง่าย</p></div><button class="button" id="newNoteBtn">+ สร้างโน้ต</button></div>
+        <div class="notes-toolbar"><input class="input" id="noteSearch" placeholder="ค้นหาโน้ตหรือเนื้อหา..." aria-label="ค้นหาโน้ต"><select class="input select-control" id="noteSubjectFilter"><option value="all">ทุกวิชา</option></select></div>
+        <div class="notes-layout"><div id="notesGrid" class="notes-grid"></div><article class="panel note-editor"><div class="panel-heading"><div><h3 id="noteEditorTitle">สร้างโน้ตใหม่</h3><p>บันทึกสิ่งที่อยากจำ</p></div><button class="text-button" id="clearNote">ล้าง</button></div><form id="noteForm" class="form-stack"><input type="hidden" id="noteId"><label>หัวข้อโน้ต<input class="input" id="noteTitle" placeholder="เช่น สรุปเรื่องเซลล์" required maxlength="100"></label><label>วิชา<input class="input" id="noteSubject" placeholder="เช่น ชีววิทยา" value="ทั่วไป"></label><label>เนื้อหา<textarea class="input textarea" id="noteContent" placeholder="เขียนสรุปหรือสิ่งที่ต้องทบทวน..." rows="8"></textarea></label><button class="button button-full" type="submit">บันทึกโน้ต</button></form></article></div>
+      </section>
+
+      <section class="page" id="page-progress">
+        <div class="page-intro"><div><div class="eyebrow">YOUR EFFORT, MADE VISIBLE</div><h2>Progress Analytics</h2><p>มองเห็นพัฒนาการจากข้อมูลจริงที่คุณบันทึกไว้</p></div><button class="button button-secondary" id="exportProgress">ส่งออกสรุป ↗</button></div>
+        <div class="stats-grid progress-stats"><article class="stat-card"><div class="stat-top"><span>งานเสร็จทั้งหมด</span><span class="stat-icon">✓</span></div><strong class="stat-value" id="progressDone">0</strong><p>งานที่ทำเครื่องหมายว่าเสร็จ</p></article><article class="stat-card"><div class="stat-top"><span>เวลาที่โฟกัส</span><span class="stat-icon">◷</span></div><strong class="stat-value" id="progressMinutes">0 <small>นาที</small></strong><p>เวลาที่สะสมผ่าน Focus Room</p></article><article class="stat-card"><div class="stat-top"><span>โน้ตทั้งหมด</span><span class="stat-icon">▤</span></div><strong class="stat-value" id="progressNotes">0</strong><p>ความรู้ที่บันทึกไว้</p></article><article class="stat-card"><div class="stat-top"><span>นิสัยที่เช็กอิน</span><span class="stat-icon">✳</span></div><strong class="stat-value" id="progressHabitRate">0%</strong><p>ความคืบหน้าของวันนี้</p></article></div>
+        <div class="dashboard-grid progress-grid"><article class="panel"><div class="panel-heading"><div><h3>งานที่เสร็จตามวิชา</h3><p>จำนวนงานที่ทำเสร็จในแต่ละวิชา</p></div></div><div id="subjectChart" class="bar-chart"></div></article><article class="panel"><div class="panel-heading"><div><h3>Weekly focus</h3><p>นาทีที่โฟกัสในแต่ละวัน</p></div></div><div id="focusChart" class="week-chart"></div></article></div><article class="panel insight-panel"><div class="panel-heading"><div><h3>Study insights</h3><p>ข้อสังเกตจากข้อมูลของคุณ</p></div><span class="pill">INSIGHTS</span></div><div id="insightsList" class="insights-list"></div></article>
+      </section>
+
+      <section class="page" id="page-habits">
+        <div class="page-intro"><div><div class="eyebrow">BUILD ROUTINES THAT SUPPORT YOU</div><h2>Habit Tracker</h2><p>สร้างกิจวัตรที่ดีทีละนิด โดยไม่ต้องทำทุกอย่างให้สมบูรณ์แบบ</p></div><button class="button" id="addHabitBtn">+ เพิ่มนิสัย</button></div>
+        <div class="habit-summary panel"><div><span class="muted small">TODAY'S CHECK-IN</span><h3 id="habitSummaryTitle">เริ่มต้นวันใหม่</h3><p id="habitSummaryText">เช็กอินเมื่อทำกิจกรรมที่ตั้งใจไว้</p></div><div class="ring" id="habitRing"><span id="habitPercent">0%</span></div></div>
+        <div id="habitsGrid" class="habits-grid"></div>
+        <div class="panel form-panel habit-form-panel"><div class="panel-heading"><div><h3>เพิ่มนิสัยใหม่</h3><p>เลือกสิ่งเล็ก ๆ ที่อยากทำสม่ำเสมอ</p></div></div><form id="habitForm" class="habit-add-form"><input class="input" id="habitName" placeholder="เช่น อ่านหนังสือ 20 นาที" required maxlength="80"><select class="input select-control" id="habitCategory"><option>การเรียน</option><option>สุขภาพ</option><option>ชีวิตประจำวัน</option></select><button class="button" type="submit">เพิ่มนิสัย +</button></form></div>
+      </section>
+
+      <section class="page" id="page-themes">
+        <div class="page-intro"><div><div class="eyebrow">MAKE IT YOUR SPACE</div><h2>Theme Studio</h2><p>เลือกสีที่ใช่สำหรับพื้นที่เรียนของคุณ</p></div><span class="pill">6 THEMES</span></div>
+        <div class="theme-gallery" id="themeGallery">
+          <button class="theme-card" data-theme-choice="white"><div class="theme-preview preview-white"><div class="preview-top"></div><div class="preview-body"><i></i><i></i><i></i></div></div><strong>White Mode</strong><span>ขาว · ดำ</span></button>
+          <button class="theme-card" data-theme-choice="dark"><div class="theme-preview preview-dark"><div class="preview-top"></div><div class="preview-body"><i></i><i></i><i></i></div></div><strong>Dark Mode</strong><span>ดำ · ขาว</span></button>
+          <button class="theme-card" data-theme-choice="blue"><div class="theme-preview preview-blue"><div class="preview-top"></div><div class="preview-body"><i></i><i></i><i></i></div></div><strong>Sky Blue</strong><span>ฟ้าพาสเทล</span></button>
+          <button class="theme-card" data-theme-choice="pink"><div class="theme-preview preview-pink"><div class="preview-top"></div><div class="preview-body"><i></i><i></i><i></i></div></div><strong>Sakura Pink</strong><span>ชมพูพาสเทล</span></button>
+          <button class="theme-card" data-theme-choice="green"><div class="theme-preview preview-green"><div class="preview-top"></div><div class="preview-body"><i></i><i></i><i></i></div></div><strong>Matcha Green</strong><span>เขียวพาสเทล</span></button>
+          <button class="theme-card" data-theme-choice="red"><div class="theme-preview preview-red"><div class="preview-top"></div><div class="preview-body"><i></i><i></i><i></i></div></div><strong>Crimson Red</strong><span>แดง</span></button>
+        </div>
+        <div class="panel theme-note"><span class="stat-icon">✦</span><div><strong>ธีมจะถูกบันทึกโดยอัตโนมัติ</strong><p>เมื่อกลับมาใช้เว็บไซต์บนเบราว์เซอร์เดิม ระบบจะจำธีมที่คุณเลือกไว้ ส่วนการพิมพ์จะใช้รูปแบบที่ประหยัดหมึก</p></div></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-intro"><div><div class="eyebrow">SET UP YOUR STUDY SPACE</div><h2>Settings</h2><p>กำหนดค่าเริ่มต้นให้เหมาะกับชีวิตประจำวันของคุณ</p></div></div>
+        <div class="settings-layout"><article class="panel"><div class="panel-heading"><div><h3>การตั้งค่าทั่วไป</h3><p>ตั้งค่าเป้าหมายและเวลาที่สะดวก</p></div></div><form id="settingsForm" class="form-stack"><label>ชื่อที่อยากให้แสดง<input class="input" id="displayName" placeholder="เช่น นักเรียนคนเก่ง"></label><div class="form-two"><label>เวลาเริ่มวัน<input class="input" id="dayStart" type="time" value="08:00"></label><label>เวลาเข้านอน<input class="input" id="sleepTime" type="time" value="22:30"></label></div><label>เป้าหมายอ่านหนังสือต่อวัน (นาที)<input class="input" id="dailyGoal" type="number" min="10" max="720" value="120"></label><label>ธีมเริ่มต้น<select class="input" id="defaultTheme"><option value="white">White Mode — ขาวดำ</option><option value="dark">Dark Mode — ดำขาว</option><option value="blue">Sky Blue — ฟ้าพาสเทล</option><option value="pink">Sakura Pink — ชมพูพาสเทล</option><option value="green">Matcha Green — เขียวพาสเทล</option><option value="red">Crimson Red — แดง</option></select></label><button class="button" type="submit">บันทึกการตั้งค่า</button></form></article><article class="panel"><div class="panel-heading"><div><h3>ข้อมูลและความเป็นส่วนตัว</h3><p>ข้อมูลของบัญชีที่ลงชื่อเข้าใช้</p></div></div><div class="helper-box"><strong>บัญชีส่วนตัวและการซิงก์</strong><p>รายการงาน โน้ต ตาราง ธีม และสถิติจะบันทึกในฐานข้อมูลบนคลาวด์ของบัญชีที่ลงชื่อเข้าใช้ และแคชในเบราว์เซอร์นี้ ระบบใช้สิทธิ์ฐานข้อมูลแยกตามบัญชีเพื่อไม่ให้บัญชีอื่นอ่านข้อมูลของคุณได้</p><p id="cloudSyncStatus" class="cloud-sync-status">สถานะการบันทึก: กำลังตรวจสอบ…</p></div><button class="button button-secondary button-full" id="exportData">ส่งออกข้อมูลสำรอง JSON</button><button class="button button-danger button-full" id="clearData">ลบข้อมูลใน STUDIQ</button></article></div>
+      </section>
+
+      <footer class="site-footer"><span>© 2026 STUDIQ · Your Personal Learning System</span><span>Plan smarter. Learn better.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="importFile" accept="application/json" hidden>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
