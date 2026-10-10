@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STUDIQ – ระบบวางแผนการเรียนของคุณ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="side">
+  <h1 class="logo">STUDIQ</h1>
+  <nav id="nav">
+    <button data-p="dash" class="on">Dashboard</button>
+    <button data-p="plan">Planner</button>
+    <button data-p="sched">Smart Schedule</button>
+    <button data-p="focus">Focus Room</button>
+    <button data-p="notes">My Notes</button>
+    <button data-p="theme">Theme & Settings</button>
+  </nav>
+</aside>
+<main>
+  <section id="dash" class="page on"></section>
+
+  <section id="plan" class="page">
+    <h2>Planner</h2>
+    <form id="taskForm" class="row">
+      <input id="tTitle" placeholder="ชื่องาน / วิชา เช่น การบ้านฟิสิกส์" required>
+      <input id="tSubj" placeholder="วิชา">
+      <input id="tDue" type="date" required>
+      <select id="tImp"><option value="1">สำคัญน้อย</option><option value="2" selected>สำคัญปานกลาง</option><option value="3">สำคัญมาก</option></select>
+      <input id="tHrs" type="number" min="0.5" step="0.5" value="1" title="ชั่วโมงที่คาดว่าจะใช้">
+      <select id="tType"><option>การบ้าน</option><option>สอบ</option><option>อ่านหนังสือ</option><option>กิจกรรม</option></select>
+      <button class="btn">เพิ่มงาน</button>
+    </form>
+    <div id="taskList"></div>
+  </section>
+
+  <section id="sched" class="page">
+    <h2>Smart Schedule</h2>
+    <p class="muted">สร้างตารางอ่านหนังสือจากเวลาว่าง กำหนดส่ง และวันสอบ (ตั้งเวลาว่างได้ที่หน้า Theme & Settings)</p>
+    <div class="row noprint">
+      <button class="btn" id="gen">สร้างตาราง / จัดใหม่</button>
+      <button class="btn ghost" id="print">พิมพ์ A4</button>
+      <button class="btn ghost" id="png">บันทึกเป็น PNG</button>
+    </div>
+    <div id="schedOut"></div>
+  </section>
+
+  <section id="focus" class="page">
+    <h2>Focus Room</h2>
+    <div class="row"><select id="fSubj"></select>
+      <input id="fWork" type="number" min="1" value="25" title="นาทีอ่าน"> <span>นาที พัก</span>
+      <input id="fBreak" type="number" min="1" value="5" title="นาทีพัก"> <span>นาที</span></div>
+    <div id="clock" class="clock">25:00</div>
+    <div class="row"><button class="btn" id="fStart">เริ่ม</button><button class="btn ghost" id="fStop">หยุดและบันทึก</button></div>
+    <p id="fState" class="muted"></p>
+  </section>
+
+  <section id="notes" class="page">
+    <h2>My Notes</h2>
+    <form id="noteForm" class="col">
+      <div class="row"><input id="nTitle" placeholder="หัวข้อ" required><input id="nSubj" placeholder="วิชา"></div>
+      <textarea id="nBody" rows="4" placeholder="เนื้อหา"></textarea>
+      <button class="btn">บันทึกโน้ต</button>
+    </form>
+    <input id="nSearch" placeholder="ค้นหาโน้ต">
+    <div id="noteList"></div>
+  </section>
+
+  <section id="theme" class="page">
+    <h2>Theme & Settings</h2>
+    <h3>ธีมสี</h3>
+    <div id="themes" class="row"></div>
+    <div class="row">
+      <label>สีหลัก <input type="color" id="cMain"></label>
+      <label>พื้นหลัง <input type="color" id="cBg"></label>
+    </div>
+    <h3>เวลาของฉัน</h3>
+    <div class="row">
+      <label>ว่างตั้งแต่ <input type="time" id="sFrom"></label>
+      <label>ถึง <input type="time" id="sTo"></label>
+      <label>เป้าหมายอ่านต่อวัน (ชม.) <input type="number" id="sGoal" min="1" step="0.5"></label>
+    </div>
+    <button class="btn ghost" id="reset">ล้างข้อมูลทั้งหมด</button>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
